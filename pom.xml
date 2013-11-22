@@ -3,7 +3,7 @@
   <artifactId>deegree-layer-mapnik</artifactId>
   <packaging>jar</packaging>
   <name>deegree-layer-mapnik</name>
-  <version>0.1</version>
+  <version>0.1-SNAPSHOT</version>
   <description>Layer implementation for layers using mapnik as a renderer</description>
 
   <parent>
