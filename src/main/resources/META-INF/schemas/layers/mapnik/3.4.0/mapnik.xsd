@@ -15,7 +15,7 @@
   <import namespace="http://www.deegree.org/layers/base" schemaLocation="http://schemas.deegree.org/layers/base/3.2.0/base.xsd" />
 
   <complexType name="MapnikLayerType">
-    <sequence>
+    <sequence maxOccurs="unbounded">
       <element name="MapnikConfiguration" type="string" />
       <group ref="l:LayerInfo" />
     </sequence>
