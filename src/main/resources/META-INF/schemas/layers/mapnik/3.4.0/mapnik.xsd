@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://hwbllmnn.de/deegree/layers/mapnik" xmlns:m="http://hwbllmnn.de/deegree/layers/mapnik"
+  elementFormDefault="qualified" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.1"
+  xmlns:l="http://www.deegree.org/layers/base">
+
+  <annotation>
+    <appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="de.hwbllmnn.deegree.layer.mapnik.jaxb" />
+      </jaxb:schemaBindings>
+    </appinfo>
+  </annotation>
+
+  <import namespace="http://www.deegree.org/layers/base" schemaLocation="http://schemas.deegree.org/layers/base/3.2.0/base.xsd" />
+
+  <complexType name="MapnikLayerType">
+    <sequence>
+      <element name="MapnikConfiguration" type="string" />
+      <group ref="l:LayerInfo" />
+    </sequence>
+  </complexType>
+
+  <element name="MapnikLayers">
+    <complexType>
+      <sequence>
+        <element name="MapnikLayer" type="m:MapnikLayerType" maxOccurs="unbounded" />
+      </sequence>
+      <attribute name="configVersion" type="m:ConfigVersionType" use="required" />
+    </complexType>
+  </element>
+
+  <simpleType name="ConfigVersionType">
+    <restriction base="string">
+      <enumeration value="3.4.0" />
+    </restriction>
+  </simpleType>
+
+</schema>

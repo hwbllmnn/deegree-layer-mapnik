@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>deegree-layer-mapnik</artifactId>
+  <packaging>jar</packaging>
+  <name>deegree-layer-mapnik</name>
+  <version>0.1</version>
+  <description>Layer implementation for layers using mapnik as a renderer</description>
+
+  <parent>
+    <groupId>org.deegree</groupId>
+    <artifactId>deegree-layers</artifactId>
+    <version>3.4-pre8</version>
+  </parent>
+
+  <repositories>
+    <repository>
+      <id>repo</id>
+      <url>https://jenkins.occamlabs.de/nexus/content/groups/repo</url>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>deegree-repo</id>
+      <url>http://repo.deegree.org/content/groups/public</url>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb2-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>org.deegree</groupId>
+            <artifactId>deegree-core-layer</artifactId>
+            <version>3.4-pre8</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.deegree</groupId>
+      <artifactId>deegree-core-layer</artifactId>
+      <version>3.4-pre8</version>
+    </dependency>
+    <dependency>
+      <groupId>mapnik</groupId>
+      <artifactId>mapnik</artifactId>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
+
+</project>
