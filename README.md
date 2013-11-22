@@ -14,14 +14,12 @@ there.
 The configuration format is very simple, just specify the path to your
 mapnik XML configuration style for each layer:
 
-  <?xml version="1.0"?>
-  <MapnikLayers xmlns="http://www.deegree.org/layers/mapnik" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xmlns:l="http://www.deegree.org/layers/base" xmlns:d="http://www.deegree.org/metadata/description" xmlns:s="http://www.deegree.org/metadata/spatial" xsi:schemaLocation="http://www.deegree.org/layers/mapnik mapnik.xsd"
-    configVersion="3.4.0">
-    <MapnikLayer>
-      <MapnikConfiguration>../osm.mml</MapnikConfiguration>
-      <l:Name>osm</l:Name>
-      <d:Title>OSM</d:Title>
-      <s:CRS>EPSG:25832</s:CRS>
-    </MapnikLayer>
-  </MapnikLayers>
+    <?xml version="1.0"?>
+    <MapnikLayers xmlns="http://www.deegree.org/layers/mapnik" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:l="http://www.deegree.org/layers/base" xmlns:d="http://www.deegree.org/metadata/description" xmlns:s="http://www.deegree.org/metadata/spatial" xsi:schemaLocation="http://www.deegree.org/layers/mapnik mapnik.xsd" configVersion="3.4.0">
+      <MapnikLayer>
+        <MapnikConfiguration>../osm.mml</MapnikConfiguration>
+        <l:Name>osm</l:Name>
+        <d:Title>OSM</d:Title>
+        <s:CRS>EPSG:25832</s:CRS>
+      </MapnikLayer>
+    </MapnikLayers>
