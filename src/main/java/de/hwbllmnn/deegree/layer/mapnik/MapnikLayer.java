@@ -72,7 +72,8 @@ public class MapnikLayer extends AbstractLayer {
                             throws OWSException {
         final Envelope bbox = query.getQueryBox();
         Box2d box = new Box2d( bbox.getMin().get0(), bbox.getMin().get1(), bbox.getMax().get0(), bbox.getMax().get1() );
-        return new MapnikLayerData( box, query.getWidth(), query.getHeight(), config, bbox.getCoordinateSystem().getAlias() );
+        return new MapnikLayerData( box, query.getWidth(), query.getHeight(), config,
+                                    bbox.getCoordinateSystem().getCode().toString() );
     }
 
     @Override
