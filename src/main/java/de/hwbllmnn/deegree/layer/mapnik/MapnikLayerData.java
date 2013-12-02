@@ -40,7 +40,6 @@ import static org.slf4j.LoggerFactory.getLogger;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -73,11 +72,11 @@ public class MapnikLayerData implements LayerData {
 
     private int height;
 
-    private File config;
+    private MapDefinition config;
 
     private String srs;
 
-    public MapnikLayerData( Box2d box, int width, int height, File config, String srs ) {
+    public MapnikLayerData( Box2d box, int width, int height, MapDefinition config, String srs ) {
         this.box = box;
         this.width = width;
         this.height = height;
@@ -87,20 +86,15 @@ public class MapnikLayerData implements LayerData {
 
     @Override
     public void render( RenderContext context ) {
-        MapDefinition m = null;
         Image image = null;
 
         try {
-            m = new MapDefinition();
-
-            m.loadMap( config.getAbsolutePath(), false );
-
-            m.setSrs( getProjLine( srs ) );
-            m.resize( width, height );
-            m.zoomToBox( box );
+            config.setSrs( getProjLine( srs ) );
+            config.resize( width, height );
+            config.zoomToBox( box );
 
             image = new Image( width, height );
-            Renderer.renderAgg( m, image );
+            Renderer.renderAgg( config, image );
             byte[] contents = image.saveToMemory( "png" );
             BufferedImage img = ImageIO.read( new ByteArrayInputStream( contents ) );
             context.paintImage( img );
@@ -110,8 +104,6 @@ public class MapnikLayerData implements LayerData {
         } finally {
             if ( image != null )
                 image.dispose();
-            if ( m != null )
-                m.dispose();
         }
     }
 

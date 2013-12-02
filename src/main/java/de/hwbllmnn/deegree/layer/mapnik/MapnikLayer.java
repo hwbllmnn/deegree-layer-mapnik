@@ -44,6 +44,7 @@ import java.io.File;
 import java.util.List;
 
 import mapnik.Box2d;
+import mapnik.MapDefinition;
 
 import org.deegree.commons.ows.exception.OWSException;
 import org.deegree.geometry.Envelope;
@@ -60,11 +61,12 @@ import org.deegree.layer.metadata.LayerMetadata;
  */
 public class MapnikLayer extends AbstractLayer {
 
-    private File config;
+    private MapDefinition mapdef;
 
     public MapnikLayer( LayerMetadata md, File config ) {
         super( md );
-        this.config = config;
+        mapdef = new MapDefinition();
+        mapdef.loadMap( config.getAbsolutePath(), false );
     }
 
     @Override
@@ -72,7 +74,7 @@ public class MapnikLayer extends AbstractLayer {
                             throws OWSException {
         final Envelope bbox = query.getQueryBox();
         Box2d box = new Box2d( bbox.getMin().get0(), bbox.getMin().get1(), bbox.getMax().get0(), bbox.getMax().get1() );
-        return new MapnikLayerData( box, query.getWidth(), query.getHeight(), config,
+        return new MapnikLayerData( box, query.getWidth(), query.getHeight(), mapdef,
                                     bbox.getCoordinateSystem().getCode().toString() );
     }
 
